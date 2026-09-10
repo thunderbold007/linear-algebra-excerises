@@ -2,6 +2,7 @@ import math
 
 # u times v
 def vectorProduct(u,v):
+    print(u,v)
     # multiple first array current i by another array current i
     if  len(u[0]) != len(v[0]) or len(u)!=len(v) :
         print("not valid")
@@ -10,7 +11,7 @@ def vectorProduct(u,v):
     j= []
     productVectors =0
     for i in range(len(u[0])):
-        k = u[0][i] * v[0][i]
+        k = eval(u[0][i]) *eval( v[0][i])
         j.append(k)
     for i in j:
         productVectors+= i

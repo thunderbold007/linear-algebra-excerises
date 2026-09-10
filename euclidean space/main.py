@@ -2,6 +2,7 @@ import math
 import numbers
 import degreeOfVector
 import unitVector
+import proveOrthogonal
 # excercise 2.2
 # 1. let u and v be vetcors in R^2 . determina the angle between u and v
 # u = (1 1) , v = (0 1)
@@ -59,3 +60,10 @@ u4 = [-math.pi/5, math.pi,-math.pi,math.pi/10,0]
 # unitVector.findUnitVector(u4)
 
 # We need to prove that u = (a b) and v = (-b a) are orthogonal 
+
+# 8. prove u and v are orthogonal 
+u5 = ['a','b']
+v5 = ['-b','a']
+
+orthogonal =proveOrthogonal.proveOrthogonal(u5,v5)
+print(orthogonal)
