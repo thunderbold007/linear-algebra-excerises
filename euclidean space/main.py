@@ -3,6 +3,8 @@ import numbers
 import degreeOfVector
 import unitVector
 import proveOrthogonal
+import shortestDis
+
 # excercise 2.2
 # 1. let u and v be vetcors in R^2 . determina the angle between u and v
 # u = (1 1) , v = (0 1)
@@ -65,5 +67,18 @@ u4 = [-math.pi/5, math.pi,-math.pi,math.pi/10,0]
 u5 = ['a','b']
 v5 = ['-b','a']
 
-orthogonal =proveOrthogonal.proveOrthogonal(u5,v5)
-print(orthogonal)
+# orthogonal =proveOrthogonal.proveOrthogonal(u5,v5)
+# print(orthogonal)
+
+# 12. find the shortest distance , correct to 2dp , between the vectors and the corresponding hyperplanes:
+# shortest distance = |v.u +c|/||v||
+
+vectorU = [1,1]
+hyperplane = "y = x+1"
+
+# shortestDis.distance(vectorU,hyperplane)
+
+vectorU2 = [1,2,3,4]
+hyperplane2= "z+-2x + 3y - z-7 +12=-x -7-12"
+
+shortestDis.distance(vectorU2,hyperplane2)

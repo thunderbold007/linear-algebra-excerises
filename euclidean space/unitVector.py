@@ -1,11 +1,10 @@
+from lib import norm
 def findUnitVector(u):
-    normOfU =None
-    squaringVectors=0
     unitVectors = []
-    for i in u:
-        squaringVectors+= i*i
-    normOfU=squaringVectors**0.5
+    normOfU = norm.findNorm(u)
+    print(normOfU)
     for i in u:
         unitVectors.append((1/normOfU )* i)
+    print(unitVectors)
     return unitVectors
-    # extra , check check check to see if length of u is 1 or not\
+    # extra , check check check to see if length of u is 1 or not

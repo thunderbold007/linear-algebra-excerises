@@ -6,8 +6,6 @@ def proveOrthogonal (u,v):
        return f"This is orthogonal and product is {product}"
    else:
        return f"this is not orthogonal and product is {product}"
-
-
 def getCoefficient(*args):
     kk =[]
     index = 0
