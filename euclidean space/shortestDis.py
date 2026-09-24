@@ -1,62 +1,28 @@
 import proveOrthogonal
 from lib import norm
 import degreeOfVector
+from lib import getVarsEq
+from lib import varsOps
 def distance(u,plane):
-    formatedEqu=findVandC(plane)
-    print(formatedEqu)
-    # print(formatedEqu)
-    orderedPlane =orderTheCoef(formatedEqu[0])
+    formatedEqu=getVarsEq.findVandC(plane)
+    c = getC(formatedEqu)
+    varsOps.varsOps(formatedEqu)
+    orderedPlane =orderTheCoef(formatedEqu)
     print(orderedPlane)
     # formatedEqu[0]= orderedPlane
-    v = proveOrthogonal.getCoefficient(formatedEqu[0])
-    # c = formatedEqu[1]
-    # print(c,formatedEqu)
-    # normOfV = norm.findNorm(v[0])
+    v = proveOrthogonal.getCoefficient(orderedPlane)
+    print(v)
+    normOfV = norm.findNorm(v[0])
+    print(normOfV)
     # # u.v
-    # vectorProduct = degreeOfVector.vectorProduct([u],v)
-    # shortestDis = abs((vectorProduct+c)/normOfV)
-    # return shortestDis
-    
-def findVandC(plane):
-    c = 0
-    equalPresent = False
-    vars = []
-    j =0
-    opsInt= "" 
-    var=""
-    for i in plane:
-        if i == " ":
-            j = j+1
-            continue
-        if (j==0 and i =="-"):
-            opsInt= "-"
-            j=j+1
-            continue
-        if i =="=" and plane[j+1]=="-":
-            opsInt="-"
-            equalPresent =True
-            j=j+1
-            continue
-        if i == "=" or i == "+" or i == "-":
-            j = j+1
-            if len(var)>0:
-                gg=push(opsInt,equalPresent,var)
-                vars.append(gg)
-            var=""
-            if i =="=":
-                equalPresent= True
-            opsInt=i
-            continue
-        var= var+i
-        if j == len(plane)-1:
-            vars.append(push(opsInt,equalPresent,var))
-        j=j+1
-        
-    c= getC(vars,c)
-    return [vars,c]
+    vectorProduct = degreeOfVector.vectorProduct([u],v)
+    shortestDis = abs((vectorProduct+c)/normOfV)
+    print(shortestDis)
+    return shortestDis
 
-def getC(vars,c):
+def getC(vars):
     i =0
+    c=0
     while i < len(vars):
         try:
             if float(vars[i]):
@@ -69,44 +35,44 @@ def getC(vars,c):
             pass
     return c
 
-def push(ops,eq,value):
-    if eq:
-        if ops=="-":
-            return value
-        else:
-            return f"-{value}"
-    elif ops=="-":
-        return f"{ops}{value}"
-    return value
-
-
 
 
 def orderTheCoef(th):
-       
         jj ={
-            
+           
         }
         temp1 = []
+        temp2=[]
         for i in th:
-            if "-" in i:
-                tempStr = i.replace("-","")
-                temp1.append(tempStr)
-                jj[tempStr]= "-"
-            else:
-                temp1.append(i)
+            for j in i:
+                if j.isdigit() or j =='-':
+                    temp2.append(j)
+                    continue
+                if len(temp2) ==0:
+                    temp2.append("1")
+                if len(temp2)==1 and temp2[0]=="-":
+                    temp2.append("1")
+                if not j.isdigit() and len(temp2)>0:
+                    if not j in temp1:
+                        temp1.append(j)
+                    if j in jj:
+                        jj[j]=(int(jj[j])+int("".join(temp2)))
+                        temp2=[]
+                        continue
+                    jj[j]= "".join(temp2)
+                    temp2=[]
         newPlane = sorted(temp1)
         index = 0
         for i in newPlane:
             try:
                 for key,val in jj.items():
                     if i ==key:
-                        i = val+i
-                        newPlane[index]= i
+                        ii = str(val)+i
+                        newPlane[index]= ii
                 index=index+1
-            except:
+            except ValueError as e:
                 index=index+1
-                print("eror")
+                print(e)
         return newPlane
     
 

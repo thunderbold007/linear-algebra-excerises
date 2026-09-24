@@ -79,6 +79,6 @@ hyperplane = "y = x+1"
 # shortestDis.distance(vectorU,hyperplane)
 
 vectorU2 = [1,2,3,4]
-hyperplane2= "z+-2x + 3y - z-7 +12=-x -7-12"
+hyperplane2= "-2w + 3y+x+x -z-7 +12= -3x+3x -7-12"
 
 shortestDis.distance(vectorU2,hyperplane2)
