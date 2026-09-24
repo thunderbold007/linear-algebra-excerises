@@ -40,10 +40,6 @@ def findK(*args):
             variable = i
             continue
         h.append(i*i)
-    # Now we have squared number of equation, next we need to square both sides to get rid of root of left sides to both sides to find value of varaible, we can just assume that we sqaured both sides because 1 square will be 1 and left side after squaring will be same as previoud loop results, we dont need to take account of negative numbers because after squaring negative numbers becomes postive
-
-    # since on left side , all will be postive and right side will be 1
-    # so subsituing everything on right side by positive 1 will be:
     subsByOne=0
     for i in h:
         subsByOne+= i
