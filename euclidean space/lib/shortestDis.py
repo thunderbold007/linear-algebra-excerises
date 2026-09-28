@@ -1,6 +1,6 @@
 import proveOrthogonal
 from lib import norm
-import degreeOfVector
+import lib.degreeOfVector as degreeOfVector
 from lib import getVarsEq
 from lib import varsOps
 def distance(u,plane):
@@ -8,8 +8,6 @@ def distance(u,plane):
     c = getC(formatedEqu)
     varsOps.varsOps(formatedEqu)
     orderedPlane =orderTheCoef(formatedEqu)
-    print(orderedPlane)
-    # formatedEqu[0]= orderedPlane
     v = proveOrthogonal.getCoefficient(orderedPlane)
     print(v)
     normOfV = norm.findNorm(v[0])
@@ -17,7 +15,6 @@ def distance(u,plane):
     # # u.v
     vectorProduct = degreeOfVector.vectorProduct([u],v)
     shortestDis = abs((vectorProduct+c)/normOfV)
-    print(shortestDis)
     return shortestDis
 
 def getC(vars):

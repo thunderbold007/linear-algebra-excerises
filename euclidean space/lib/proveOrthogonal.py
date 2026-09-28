@@ -1,4 +1,4 @@
-import degreeOfVector
+import lib.degreeOfVector as degreeOfVector
 def proveOrthogonal (u,v):
    vectors = getCoefficient(u,v)
    product = degreeOfVector.vectorProduct([vectors[0]],[vectors[1]])
